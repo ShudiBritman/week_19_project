@@ -134,6 +134,19 @@ services:
      - backend
 
 
+  analytics:
+    build: ./analytics
+    container_name: analytics
+    environment:
+      KAFKA_HOST: kafka
+      KAFKA_PORT: 9092
+    depends_on:
+      kafka:
+        condition: service_healthy
+    networks:
+     - backend
+
+
 
 networks:
   backend:
